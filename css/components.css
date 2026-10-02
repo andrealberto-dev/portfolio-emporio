@@ -1,0 +1,542 @@
+/*
+ * components.css
+ * Componentes reutilizáveis: logotipo, cabeçalho, botões (tema), eyebrow,
+ * selo, chips, etiqueta de preço, campos de formulário e WhatsApp flutuante.
+ */
+
+/* ════════════════ LOGOTIPO TIPOGRÁFICO ════════════════ */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-ink);
+}
+
+/* Selo redondo "MG" com borda dupla, como carimbo de saca */
+.logo__seal {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  box-shadow: inset 0 0 0 3px var(--color-secondary), inset 0 0 0 4px var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo__name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.logo__sub {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-top: 3px;
+}
+
+/* ════════════════ CABEÇALHO ════════════════ */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--header-height);
+  background: rgba(245, 239, 224, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 300ms ease;
+}
+
+/* Linha aparece depois que a página rola (classe aplicada por main.js) */
+.site-header.is-scrolled {
+  border-bottom-color: var(--color-line);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Botão do menu mobile (duas barras) */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+}
+
+.nav-toggle__bar {
+  display: block;
+  height: 2px;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transition: transform 300ms var(--ease-out);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:first-child {
+  transform: translateY(4.5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:last-child {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* Menu mobile: painel que desce do topo */
+.main-nav {
+  position: fixed;
+  top: var(--header-height);
+  inset-inline: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--gutter);
+  background: var(--color-secondary);
+  border-bottom: 1px solid var(--color-line);
+  transform: translateY(-120%);
+  visibility: hidden;
+  transition: transform 400ms var(--ease-out), visibility 0s linear 400ms;
+}
+
+.main-nav.is-open {
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform 400ms var(--ease-out), visibility 0s;
+}
+
+.main-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.main-nav__link {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-xl);
+  letter-spacing: -0.02em;
+}
+
+.main-nav__cta {
+  align-self: flex-start;
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-xl);
+    padding: 0;
+    background: none;
+    border: 0;
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .main-nav__list {
+    flex-direction: row;
+    gap: var(--space-lg);
+  }
+
+  .main-nav__link {
+    position: relative;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    letter-spacing: 0.02em;
+  }
+
+  /* Sublinhado tipo traço de lápis que cresce no hover */
+  .main-nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms var(--ease-out);
+  }
+
+  .main-nav__link:hover::after,
+  .main-nav__link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .main-nav__cta.origin-btn-primary {
+    height: 40px;
+    padding: 0 20px;
+    font-size: var(--fs-sm);
+  }
+}
+
+/* ════════════════ BOTÕES — tema do Armazém ════════════════ */
+/* Origin primário: madeira escura, ripple dourado */
+.origin-btn-primary {
+  --ob-fill-color:   var(--color-accent);
+  --ob-text-on-fill: var(--color-ink);
+  --ob-radius:       999px;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  border: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Tamanho grande para CTAs */
+.btn-lg.origin-btn {
+  height: 56px;
+  padding: 0 34px;
+  font-size: var(--fs-base);
+}
+
+/* Origin dourado no tom da marca */
+.origin-btn-gold {
+  --ob-fill-color:   var(--color-accent);
+  --ob-text-on-fill: var(--color-ink);
+  background: var(--color-primary-deep);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Flow: cores da marca */
+.flow-btn {
+  --flow-bg:         var(--color-primary);
+  --flow-text:       var(--color-primary);
+  --flow-text-hover: var(--color-secondary);
+  border-color: rgba(123, 79, 46, 0.45);
+  font-family: var(--font-body);
+}
+
+.flow-btn-gold {
+  --flow-bg:         var(--color-accent);
+  --flow-text:       var(--color-primary);
+  --flow-text-hover: var(--color-ink);
+  border-color: rgba(201, 151, 58, 0.7);
+}
+
+.flow-btn-white {
+  --flow-bg:         var(--color-secondary);
+  --flow-text:       var(--color-secondary);
+  --flow-text-hover: var(--color-ink);
+}
+
+/* ════════════════ EYEBROW (rótulo de seção) ════════════════ */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Tracinho antes do texto */
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+.eyebrow--light {
+  color: var(--color-accent);
+}
+
+/* ════════════════ SELO GIRATÓRIO ════════════════ */
+.stamp {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 128px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.stamp__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: currentColor;
+  animation: stamp-spin 22s linear infinite;
+}
+
+.stamp__center {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.7rem;
+  letter-spacing: -0.04em;
+}
+
+@keyframes stamp-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp__ring { animation: none; }
+}
+
+/* ════════════════ CHIPS (filtros) ════════════════ */
+.chip {
+  padding: 8px 18px;
+  border: 1.5px solid var(--color-line);
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  background: transparent;
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
+}
+
+.chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.chip.is-active {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-secondary);
+}
+
+/* ════════════════ ETIQUETA DE PREÇO ════════════════ */
+/* Papel kraft com furo e barbante, como etiqueta pendurada no produto */
+.tag {
+  --tag-bg: var(--color-paper);
+  --tag-fg: var(--color-ink);
+  --tag-muted: var(--color-ink-soft);
+  --tag-price: var(--color-primary);
+  position: relative;
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  border-radius: var(--radius-sm);
+  /* a sombra fica no elemento pai (drop-shadow), pois o clip-path cortaria box-shadow */
+  /* canto superior cortado em chanfro, formato clássico de etiqueta */
+  clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%, 0 22px);
+  transition: transform 500ms var(--ease-out);
+}
+
+/* Furo da etiqueta */
+.tag::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  box-shadow: inset 0 1px 2px rgba(42, 26, 15, 0.35);
+  z-index: 2;
+}
+
+.tag--dark {
+  --tag-bg: var(--color-primary-dark);
+  --tag-fg: var(--color-secondary);
+  --tag-muted: rgba(245, 239, 224, 0.72);
+  --tag-price: var(--color-accent);
+}
+
+.tag--gold {
+  --tag-bg: var(--color-accent);
+  --tag-fg: var(--color-ink);
+  --tag-muted: rgba(42, 26, 15, 0.75);
+  --tag-price: var(--color-ink);
+}
+
+/* Etiqueta com foto: imagem ocupa o topo e o furo fica sobre ela */
+.tag--photo {
+  padding: 0;
+}
+
+.tag__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter: sepia(0.18) saturate(0.95);
+}
+
+.tag__body {
+  padding: var(--space-lg);
+}
+
+.tag__name {
+  font-size: var(--fs-lg);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.tag__desc {
+  margin-top: var(--space-xs);
+  font-size: var(--fs-sm);
+  color: var(--tag-muted);
+}
+
+/* Preço grande, com R$ e centavos menores */
+.tag__price {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1.5px dashed currentColor;
+  border-top-color: color-mix(in srgb, var(--tag-fg) 30%, transparent);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--tag-price);
+  letter-spacing: -0.04em;
+}
+
+.tag__currency,
+.tag__cents {
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  margin-top: 6px;
+}
+
+.tag__price-from {
+  flex-basis: 100%;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tag-muted);
+  margin-bottom: 4px;
+}
+
+.tag__serve {
+  margin-top: var(--space-2xs);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tag-muted);
+}
+
+/* ════════════════ CAMPOS DE FORMULÁRIO ════════════════ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+/* Campo estilo "linha de caderno": só a borda de baixo */
+.field__input {
+  width: 100%;
+  padding: 10px 2px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--color-line);
+  font-size: var(--fs-md);
+  transition: border-color 250ms ease;
+}
+
+.field__input:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+
+.field__input--area {
+  resize: vertical;
+  min-height: 84px;
+}
+
+.field__input[aria-invalid="true"] {
+  border-bottom-color: var(--color-closed);
+}
+
+/* ════════════════ WHATSAPP FLUTUANTE ════════════════ */
+.whatsapp-float.origin-btn-whatsapp {
+  --ob-radius: 999px;
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: 90;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  background: var(--color-whatsapp);
+  box-shadow: 0 10px 28px -8px rgba(18, 140, 126, 0.65);
+}
+
+.whatsapp-float__icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* No mobile só o ícone; texto aparece a partir do tablet */
+.whatsapp-float__label {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .whatsapp-float.origin-btn-whatsapp {
+    right: var(--space-lg);
+    bottom: var(--space-lg);
+    width: auto;
+    padding: 0 22px 0 18px;
+  }
+
+  .whatsapp-float__label {
+    display: inline;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<!--
+  index.html
+  Página única do Armazém Minas Gerais — empório e lanchonete mineira em BH.
+  Seções: hero tipográfico, cardápio (etiquetas com preço), destaques (lista lateral),
+  a estrada dos produtores, horário (caderneta) e contato (split + mapa).
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Armazém Minas Gerais — Lanchonete em Belo Horizonte - MG</title>
+  <meta name="description" content="Empório e mercearia mineira com queijos artesanais, linguiças caseiras, cachaças selecionadas, doces de leite e produtos típicos de Minas. Duas unidades em BH: Centro e Savassi.">
+  <meta name="keywords" content="lanchonete, Armazém Minas Gerais, empório mineiro, queijo artesanal, pão de queijo, cachaça, Belo Horizonte, Savassi">
+  <meta property="og:title" content="Armazém Minas Gerais — Lanchonete em Belo Horizonte - MG">
+  <meta property="og:description" content="Queijo da Canastra, linguiça caseira, cachaça de Salinas e pão de queijo quentinho. Centro e Savassi, BH.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=1200&q=80">
+  <meta name="theme-color" content="#7b4f2e">
+
+  <!-- Marca que o JS está ativo (as animações só escondem conteúdo com JS) -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,800;1,900&display=swap">
+
+  <!-- Componentes de animação -->
+  <link rel="stylesheet" href="components/simple-anime.css">
+  <link rel="stylesheet" href="components/origin-button.css">
+
+  <!-- Estilos do projeto: variáveis → global → componentes → página -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ═══════════ CABEÇALHO ═══════════ -->
+  <header class="site-header" id="topo">
+    <div class="site-header__inner">
+      <!-- Logotipo tipográfico -->
+      <a class="logo" href="#topo" aria-label="Armazém Minas Gerais — início">
+        <span class="logo__seal" aria-hidden="true">MG</span>
+        <span class="logo__text">
+          <span class="logo__name">Armazém</span>
+          <span class="logo__sub">Minas Gerais</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="sr-only">Abrir menu</span>
+      </button>
+
+      <nav class="main-nav" id="menu-principal" aria-label="Navegação principal">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="#cardapio">Cardápio</a></li>
+          <li><a class="main-nav__link" href="#destaques">Da prateleira</a></li>
+          <li><a class="main-nav__link" href="#estrada">Produtores</a></li>
+          <li><a class="main-nav__link" href="#horario">Horário</a></li>
+          <li><a class="main-nav__link" href="#contato">Contato</a></li>
+        </ul>
+        <a class="origin-btn origin-btn-primary main-nav__cta" href="https://wa.me/5535991234567?text=Ol%C3%A1%2C%20Armaz%C3%A9m!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer">Fazer pedido</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ═══════════ HERO TIPOGRÁFICO ═══════════ -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero__inner">
+        <p class="hero__kicker fadeInDown" data-anime="0">
+          <span class="hero__kicker-dot" aria-hidden="true"></span>
+          Empório &amp; lanchonete mineira — Centro e Savassi, BH
+        </p>
+
+        <h1 class="hero__title fadeInUp" id="hero-titulo" data-anime="0">
+          <span class="hero__line">Queijo,</span>
+          <span class="hero__line hero__line--indent">prosa <em class="hero__amp">&amp;</em></span>
+          <span class="hero__line hero__line--outline">café</span>
+          <span class="hero__line hero__line--small">quentinho no balcão.</span>
+        </h1>
+
+        <!-- Foto que invade o título -->
+        <figure class="hero__photo">
+          <div class="hero__photo-frame fadeInScale" data-anime="200">
+            <img
+              src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=1600&q=85"
+              alt="Duas peças de queijo artesanal curado sobre uma mesa de madeira rústica"
+              width="800" height="600" fetchpriority="high">
+          </div>
+          <figcaption class="hero__photo-caption">Canastra curado · 30 dias</figcaption>
+
+          <!-- Selo giratório -->
+          <div class="stamp hero__stamp" aria-hidden="true">
+            <svg class="stamp__ring" viewBox="0 0 200 200">
+              <defs>
+                <path id="selo-circulo" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/>
+              </defs>
+              <text>
+                <textPath href="#selo-circulo" textLength="482" lengthAdjust="spacing">direto do pequeno produtor ✦ feito em minas ✦ </textPath>
+              </text>
+            </svg>
+            <span class="stamp__center">uai</span>
+          </div>
+        </figure>
+
+        <div class="hero__bottom">
+          <p class="hero__lead fadeInUp" data-anime="200">
+            Queijos artesanais, linguiça caseira, cachaça de alambique e doce de leite
+            que vêm direto da roça para a nossa prateleira. Senta, pede um pão de queijo
+            e fica à vontade — aqui a conversa é sem pressa.
+          </p>
+          <div class="hero__actions fadeInUp" data-anime="400">
+            <a class="origin-btn origin-btn-primary btn-lg" href="https://wa.me/5535991234567?text=Ol%C3%A1%2C%20Armaz%C3%A9m!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer">Pedir pelo WhatsApp</a>
+            <a class="flow-btn flow-btn-gold" href="#cardapio">Ver o cardápio</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Faixa corrida de produtos (decorativa) -->
+      <div class="ribbon" aria-hidden="true">
+        <div class="ribbon__track">
+          <span>Queijo da Canastra</span><span class="ribbon__star">✦</span>
+          <span>Linguiça de pernil</span><span class="ribbon__star">✦</span>
+          <span>Cachaça de Salinas</span><span class="ribbon__star">✦</span>
+          <span>Doce de leite de Viçosa</span><span class="ribbon__star">✦</span>
+          <span>Goiabada cascão</span><span class="ribbon__star">✦</span>
+          <span>Café do Sul de Minas</span><span class="ribbon__star">✦</span>
+          <span>Queijo da Canastra</span><span class="ribbon__star">✦</span>
+          <span>Linguiça de pernil</span><span class="ribbon__star">✦</span>
+          <span>Cachaça de Salinas</span><span class="ribbon__star">✦</span>
+          <span>Doce de leite de Viçosa</span><span class="ribbon__star">✦</span>
+          <span>Goiabada cascão</span><span class="ribbon__star">✦</span>
+          <span>Café do Sul de Minas</span><span class="ribbon__star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CARDÁPIO — ETIQUETAS COM PREÇO ═══════════ -->
+    <section class="menu" id="cardapio" aria-labelledby="cardapio-titulo">
+      <div class="container">
+        <header class="menu__head">
+          <div class="menu__head-title">
+            <p class="eyebrow fadeInUp" data-anime="0">Do balcão pra mesa</p>
+            <h2 class="menu__title fadeInUp" id="cardapio-titulo" data-anime="0">
+              O que sai <span class="menu__title-em">da chapa</span><br>e do tacho hoje
+            </h2>
+          </div>
+          <p class="menu__note fadeInRight" data-anime="150">
+            Preço escrito à mão, como sempre foi. Tudo feito na hora — se demorar um tiquinho,
+            é porque tá saindo quente.
+          </p>
+        </header>
+
+        <!-- Filtros de categoria (controlados por js/main.js) -->
+        <div class="menu__filters fadeInUp" data-anime="300" role="group" aria-label="Filtrar cardápio por categoria">
+          <button class="chip is-active" type="button" data-filter="todos" aria-pressed="true">Tudo</button>
+          <button class="chip" type="button" data-filter="lanches" aria-pressed="false">Lanches</button>
+          <button class="chip" type="button" data-filter="porcoes" aria-pressed="false">Porções</button>
+          <button class="chip" type="button" data-filter="doces" aria-pressed="false">Doces</button>
+          <button class="chip" type="button" data-filter="bebidas" aria-pressed="false">Bebidas</button>
+        </div>
+
+        <ul class="menu__grid">
+          <!-- Etiqueta 1 (com foto) -->
+          <li class="menu__item menu__item--featured" data-category="porcoes">
+            <div class="fadeInUp" data-anime="100">
+              <article class="tag tag--photo">
+                <img class="tag__img" src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&q=70" alt="Tábua com linguiças, carnes curadas, tomates e temperos sobre madeira" loading="lazy" width="400" height="300">
+                <div class="tag__body">
+                  <h3 class="tag__name">Tábua do Armazém</h3>
+                  <p class="tag__desc">Três queijos da casa, linguiça de pernil na brasa, torresmo pururuca e geleia de pimenta.</p>
+                  <p class="tag__price"><span class="tag__currency">R$</span>79<span class="tag__cents">,00</span></p>
+                  <p class="tag__serve">serve 2 a 3</p>
+                </div>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 2 -->
+          <li class="menu__item" data-category="lanches">
+            <div class="fadeInUp" data-anime="250">
+              <article class="tag">
+                <h3 class="tag__name">Pão de queijo de polvilho azedo</h3>
+                <p class="tag__desc">Porção com 6, saído do forno a lenha. Casquinha crocante, miolo puxa-puxa.</p>
+                <p class="tag__price"><span class="tag__currency">R$</span>14<span class="tag__cents">,00</span></p>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 3 (com foto) -->
+          <li class="menu__item" data-category="lanches">
+            <div class="fadeInUp" data-anime="400">
+              <article class="tag tag--photo">
+                <img class="tag__img" src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=70" alt="Sanduíche tostado na chapa cortado em triângulos, com molhos ao lado" loading="lazy" width="400" height="300">
+                <div class="tag__body">
+                  <h3 class="tag__name">Pernil com Canastra</h3>
+                  <p class="tag__desc">Pernil desfiado no tempero da vó, queijo Canastra derretido e vinagrete no pão francês.</p>
+                  <p class="tag__price"><span class="tag__currency">R$</span>32<span class="tag__cents">,00</span></p>
+                </div>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 4 -->
+          <li class="menu__item" data-category="lanches">
+            <div class="fadeInUp" data-anime="550">
+              <article class="tag">
+                <h3 class="tag__name">Misto da chapa</h3>
+                <p class="tag__desc">Pão de sal, presunto cozido da casa e queijo minas meia-cura. Simples e certeiro.</p>
+                <p class="tag__price"><span class="tag__currency">R$</span>18<span class="tag__cents">,00</span></p>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 5 -->
+          <li class="menu__item" data-category="porcoes">
+            <div class="fadeInUp" data-anime="100">
+              <article class="tag tag--dark">
+                <h3 class="tag__name">Torresmo de barriga</h3>
+                <p class="tag__desc">Pururuca por fora, macio por dentro. Vem com limão-cravo e farofa de alho.</p>
+                <p class="tag__price"><span class="tag__currency">R$</span>34<span class="tag__cents">,00</span></p>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 6 (com foto) -->
+          <li class="menu__item" data-category="porcoes">
+            <div class="fadeInUp" data-anime="250">
+              <article class="tag tag--photo">
+                <img class="tag__img" src="https://images.unsplash.com/photo-1532636875304-0c89119d9b4d?w=400&q=70" alt="Linguiças grelhadas servidas em prato com tomate e pimentas assadas" loading="lazy" width="400" height="300">
+                <div class="tag__body">
+                  <h3 class="tag__name">Linguiça na brasa</h3>
+                  <p class="tag__desc">Linguiça caseira de pernil com mandioca cozida na manteiga de garrafa.</p>
+                  <p class="tag__price"><span class="tag__currency">R$</span>42<span class="tag__cents">,00</span></p>
+                </div>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 7 -->
+          <li class="menu__item" data-category="doces">
+            <div class="fadeInUp" data-anime="400">
+              <article class="tag">
+                <h3 class="tag__name">Romeu e Julieta</h3>
+                <p class="tag__desc">Goiabada cascão com fatia grossa de queijo minas frescal. Clássico que não tem erro.</p>
+                <p class="tag__price"><span class="tag__currency">R$</span>16<span class="tag__cents">,00</span></p>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 8 -->
+          <li class="menu__item" data-category="doces">
+            <div class="fadeInUp" data-anime="550">
+              <article class="tag tag--gold">
+                <h3 class="tag__name">Doce de leite de corte</h3>
+                <p class="tag__desc">Feito no tacho de cobre, servido em quadradinhos com café coado.</p>
+                <p class="tag__price"><span class="tag__currency">R$</span>12<span class="tag__cents">,00</span></p>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 9 -->
+          <li class="menu__item" data-category="bebidas">
+            <div class="fadeInUp" data-anime="100">
+              <article class="tag">
+                <h3 class="tag__name">Café no coador de pano</h3>
+                <p class="tag__desc">Grão do Sul de Minas, torra média, passado na hora em bule esmaltado.</p>
+                <p class="tag__price"><span class="tag__currency">R$</span>7<span class="tag__cents">,00</span></p>
+              </article>
+            </div>
+          </li>
+
+          <!-- Etiqueta 10 (com foto) -->
+          <li class="menu__item" data-category="bebidas">
+            <div class="fadeInUp" data-anime="250">
+              <article class="tag tag--photo tag--dark">
+                <img class="tag__img" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=70" alt="Copo de bebida âmbar com gelo e ramo de alecrim sobre balcão de madeira" loading="lazy" width="400" height="300">
+                <div class="tag__body">
+                  <h3 class="tag__name">Dose de cachaça</h3>
+                  <p class="tag__desc">Seleção de Salinas envelhecida em umburana ou bálsamo. Pergunte a da semana.</p>
+                  <p class="tag__price"><span class="tag__price-from">a partir de</span><span class="tag__currency">R$</span>12<span class="tag__cents">,00</span></p>
+                </div>
+              </article>
+            </div>
+          </li>
+        </ul>
+
+        <p class="menu__empty" hidden>Nada nessa categoria hoje — pergunta no balcão!</p>
+      </div>
+    </section>
+
+    <!-- ═══════════ DESTAQUES — LISTA LATERAL ═══════════ -->
+    <section class="shelf" id="destaques" aria-labelledby="destaques-titulo">
+      <div class="shelf__inner">
+        <div class="shelf__aside">
+          <p class="eyebrow eyebrow--light fadeInUp" data-anime="0">Da prateleira</p>
+          <h2 class="shelf__title fadeInUp" id="destaques-titulo" data-anime="0">
+            Leva um pedaço de Minas pra casa.
+          </h2>
+
+          <!-- Lista lateral (abas). O painel ao lado muda conforme o item ativo -->
+          <div class="shelf__list" role="tablist" aria-label="Produtos em destaque" aria-orientation="vertical">
+            <button class="shelf__tab is-active fadeInLeft" data-anime="150" type="button" role="tab" id="aba-queijos" aria-selected="true" aria-controls="painel-queijos">
+              <span class="shelf__tab-num">01</span><span class="shelf__tab-name">Queijos artesanais</span>
+            </button>
+            <button class="shelf__tab fadeInLeft" data-anime="300" type="button" role="tab" id="aba-linguicas" aria-selected="false" aria-controls="painel-linguicas" tabindex="-1">
+              <span class="shelf__tab-num">02</span><span class="shelf__tab-name">Linguiças caseiras</span>
+            </button>
+            <button class="shelf__tab fadeInLeft" data-anime="450" type="button" role="tab" id="aba-cachacas" aria-selected="false" aria-controls="painel-cachacas" tabindex="-1">
+              <span class="shelf__tab-num">03</span><span class="shelf__tab-name">Cachaças selecionadas</span>
+            </button>
+            <button class="shelf__tab fadeInLeft" data-anime="600" type="button" role="tab" id="aba-doces" aria-selected="false" aria-controls="painel-doces" tabindex="-1">
+              <span class="shelf__tab-num">04</span><span class="shelf__tab-name">Doces de tacho</span>
+            </button>
+            <button class="shelf__tab fadeInLeft" data-anime="750" type="button" role="tab" id="aba-cafe" aria-selected="false" aria-controls="painel-cafe" tabindex="-1">
+              <span class="shelf__tab-num">05</span><span class="shelf__tab-name">Café &amp; padaria</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Painéis -->
+        <div class="shelf__stage fadeInScale" data-anime="200">
+          <article class="shelf__panel is-active" id="painel-queijos" role="tabpanel" aria-labelledby="aba-queijos">
+            <div class="shelf__img-wrap">
+              <img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=800&q=75" alt="Tábua com queijo azul artesanal, figos frescos, nozes e ervas" loading="lazy" width="800" height="600">
+            </div>
+            <div class="shelf__card">
+              <p class="shelf__origin">Serro · Canastra · Campo das Vertentes</p>
+              <h3 class="shelf__name">Queijo de verdade, de leite cru e paciência.</h3>
+              <p class="shelf__text">Frescal pra o café da manhã, meia-cura pra tábua, curado de 60 dias pra quem gosta de sabor marcante. Cortamos na hora, no tamanho que você quiser.</p>
+              <p class="shelf__price">kg a partir de <strong>R$ 68</strong></p>
+            </div>
+          </article>
+
+          <article class="shelf__panel" id="painel-linguicas" role="tabpanel" aria-labelledby="aba-linguicas" hidden>
+            <div class="shelf__img-wrap">
+              <img src="https://images.unsplash.com/photo-1595777216528-071e0127ccbf?w=800&q=75" alt="Espetos de carne grelhada servidos sobre folhas verdes em travessa" loading="lazy" width="800" height="600">
+            </div>
+            <div class="shelf__card">
+              <p class="shelf__origin">Feitas na casa toda quinta</p>
+              <h3 class="shelf__name">Linguiça de pernil, do jeito da roça.</h3>
+              <p class="shelf__text">Pernil moído grosso, alho, pimenta-do-reino e um toque de cachaça. Tem a fina pra chapa, a grossa pra brasa e a defumada no fogão a lenha.</p>
+              <p class="shelf__price">kg a partir de <strong>R$ 49</strong></p>
+            </div>
+          </article>
+
+          <article class="shelf__panel" id="painel-cachacas" role="tabpanel" aria-labelledby="aba-cachacas" hidden>
+            <div class="shelf__img-wrap">
+              <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=800&q=75" alt="Copo de destilado envelhecido em frente a uma garrafa em balcão de bar" loading="lazy" width="800" height="600">
+            </div>
+            <div class="shelf__card">
+              <p class="shelf__origin">Salinas · Januária · Vale do Jequitinhonha</p>
+              <h3 class="shelf__name">Mais de 40 rótulos de alambique.</h3>
+              <p class="shelf__text">Prata, ouro, umburana, amburana, jequitibá. Antes de levar, prova uma dose no balcão — a gente explica a diferença de cada madeira.</p>
+              <p class="shelf__price">garrafa a partir de <strong>R$ 45</strong></p>
+            </div>
+          </article>
+
+          <article class="shelf__panel" id="painel-doces" role="tabpanel" aria-labelledby="aba-doces" hidden>
+            <div class="shelf__img-wrap">
+              <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=75" alt="Calda de caramelo escorrendo sobre sobremesa com biscoito" loading="lazy" width="800" height="600">
+            </div>
+            <div class="shelf__card">
+              <p class="shelf__origin">Viçosa · Ponte Nova · Itanhandu</p>
+              <h3 class="shelf__name">Doce de leite, goiabada e o que mais o tacho deixar.</h3>
+              <p class="shelf__text">Doce de leite pastoso e de corte, goiabada cascão, doce de figo em calda e ambrosia. Tudo sem conservante, em pote de vidro.</p>
+              <p class="shelf__price">pote a partir de <strong>R$ 22</strong></p>
+            </div>
+          </article>
+
+          <article class="shelf__panel" id="painel-cafe" role="tabpanel" aria-labelledby="aba-cafe" hidden>
+            <div class="shelf__img-wrap">
+              <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=75" alt="Prateleiras de padaria rústica com pães e baguetes em cestos de madeira" loading="lazy" width="800" height="600">
+            </div>
+            <div class="shelf__card">
+              <p class="shelf__origin">Sul de Minas · Mantiqueira</p>
+              <h3 class="shelf__name">Café moído na hora e pão que acabou de sair.</h3>
+              <p class="shelf__text">Grãos especiais de pequenos sítios, moídos na moagem que você pedir. Pão de queijo congelado pra assar em casa, biscoito de polvilho e broa de fubá.</p>
+              <p class="shelf__price">250 g a partir de <strong>R$ 29</strong></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ A ESTRADA DOS PRODUTORES (seção inesperada) ═══════════ -->
+    <section class="road" id="estrada" aria-labelledby="estrada-titulo">
+      <div class="container">
+        <div class="road__head">
+          <h2 class="road__title fadeInUp" id="estrada-titulo" data-anime="0">
+            Daqui até o balcão
+            <span class="road__title-km">são uns 2.000 km de estrada de terra e asfalto.</span>
+          </h2>
+          <p class="road__intro fadeInUp" data-anime="150">
+            Cada coisa na prateleira tem nome e sobrenome. A gente vai buscar
+            pessoalmente, conhece a família, toma o café da casa.
+          </p>
+        </div>
+
+        <ol class="road__stops">
+          <li class="road__stop fadeInUp" data-anime="100">
+            <span class="road__km">~ 320 km</span>
+            <h3 class="road__town">Serro</h3>
+            <p class="road__what">Queijo do Serro, de casca fina e sabor ácido.</p>
+          </li>
+          <li class="road__stop fadeInUp" data-anime="250">
+            <span class="road__km">~ 330 km</span>
+            <h3 class="road__town">Serra da Canastra</h3>
+            <p class="road__what">Canastra curado, o queijo que ganhou o mundo.</p>
+          </li>
+          <li class="road__stop fadeInUp" data-anime="400">
+            <span class="road__km">~ 650 km</span>
+            <h3 class="road__town">Salinas</h3>
+            <p class="road__what">Cachaça de alambique de cobre, envelhecida em madeira nativa.</p>
+          </li>
+          <li class="road__stop fadeInUp" data-anime="550">
+            <span class="road__km">~ 230 km</span>
+            <h3 class="road__town">Viçosa</h3>
+            <p class="road__what">Doce de leite no tacho, mexido com colher de pau.</p>
+          </li>
+          <li class="road__stop fadeInUp" data-anime="700">
+            <span class="road__km">~ 380 km</span>
+            <h3 class="road__town">Sul de Minas</h3>
+            <p class="road__what">Café especial da Mantiqueira, colhido no pé.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════ HORÁRIO — CADERNETA ═══════════ -->
+    <section class="hours" id="horario" aria-labelledby="horario-titulo">
+      <div class="container hours__inner">
+        <div class="hours__intro">
+          <p class="eyebrow fadeInUp" data-anime="0">Horário</p>
+          <h2 class="hours__title fadeInUp" id="horario-titulo" data-anime="0">
+            A porta abre cedo.<br><em>O café já tá passado.</em>
+          </h2>
+          <!-- Status atualizado por js/main.js -->
+          <ul class="hours__status fadeInUp" data-anime="150" aria-live="polite">
+            <li class="status" data-status-unit="centro">
+              <span class="status__dot" aria-hidden="true"></span>
+              <span class="status__label">Centro</span>
+              <span class="status__text">confira o horário ao lado</span>
+            </li>
+            <li class="status" data-status-unit="savassi">
+              <span class="status__dot" aria-hidden="true"></span>
+              <span class="status__label">Savassi</span>
+              <span class="status__text">confira o horário ao lado</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Folha de caderneta com a tabela de horários -->
+        <div class="notebook fadeInRight" data-anime="200">
+          <div class="notebook__page">
+            <table class="notebook__table">
+              <caption class="sr-only">Horário de funcionamento das unidades Centro e Savassi</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Dia</th>
+                  <th scope="col">Centro</th>
+                  <th scope="col">Savassi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-day="1"><th scope="row">Segunda</th><td>7h – 19h</td><td>8h – 21h</td></tr>
+                <tr data-day="2"><th scope="row">Terça</th><td>7h – 19h</td><td>8h – 21h</td></tr>
+                <tr data-day="3"><th scope="row">Quarta</th><td>7h – 19h</td><td>8h – 21h</td></tr>
+                <tr data-day="4"><th scope="row">Quinta</th><td>7h – 19h</td><td>8h – 21h</td></tr>
+                <tr data-day="5"><th scope="row">Sexta</th><td>7h – 19h</td><td>8h – 22h</td></tr>
+                <tr data-day="6"><th scope="row">Sábado</th><td>7h – 14h</td><td>8h – 22h</td></tr>
+                <tr data-day="0"><th scope="row">Domingo</th><td class="notebook__closed">fechado</td><td>9h – 14h</td></tr>
+              </tbody>
+            </table>
+            <p class="notebook__footnote">* Feriado: só a Savassi, das 9h às 14h.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CONTATO — SPLIT + MAPA ═══════════ -->
+    <section class="contact" id="contato" aria-labelledby="contato-titulo">
+      <div class="contact__info">
+        <p class="eyebrow fadeInUp" data-anime="0">Contato</p>
+        <h2 class="contact__title fadeInUp" id="contato-titulo" data-anime="0">Chega mais.</h2>
+
+        <!-- Seletor de unidade: troca endereço e mapa -->
+        <div class="units fadeInUp" data-anime="150" role="group" aria-label="Escolha a unidade">
+          <button class="unit is-active" type="button" data-unit="centro" aria-pressed="true">
+            <span class="unit__name">Centro</span>
+            <span class="unit__addr">Rua dos Goitacazes, 214 — Centro</span>
+          </button>
+          <button class="unit" type="button" data-unit="savassi" aria-pressed="false">
+            <span class="unit__name">Savassi</span>
+            <span class="unit__addr">Rua Pernambuco, 1060 — Savassi</span>
+          </button>
+        </div>
+
+        <!-- Formulário que monta a mensagem para o WhatsApp -->
+        <form class="order-form fadeInUp" data-anime="300" id="form-pedido" novalidate>
+          <p class="order-form__title">Encomenda rápida</p>
+          <div class="field">
+            <label class="field__label" for="campo-nome">Seu nome</label>
+            <input class="field__input" type="text" id="campo-nome" name="nome" autocomplete="name" maxlength="60" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="campo-pedido">O que vai querer?</label>
+            <textarea class="field__input field__input--area" id="campo-pedido" name="pedido" rows="3" maxlength="400" placeholder="Ex.: 500 g de Canastra meia-cura e 1 kg de linguiça fina" required></textarea>
+          </div>
+          <p class="order-form__feedback" id="form-feedback" role="status" aria-live="polite"></p>
+          <button class="origin-btn origin-btn-primary btn-lg" type="submit">Enviar pelo WhatsApp</button>
+        </form>
+
+        <p class="contact__social fadeInUp" data-anime="450">
+          <a class="flow-btn" href="https://www.instagram.com/armazemmg/" target="_blank" rel="noopener noreferrer">@armazemmg no Instagram</a>
+        </p>
+      </div>
+
+      <!-- Mapa (a URL só muda entre valores fixos definidos em js/main.js) -->
+      <div class="contact__map fadeInScale" data-anime="200">
+        <iframe
+          class="contact__iframe"
+          id="mapa"
+          title="Mapa da unidade Centro do Armazém Minas Gerais"
+          src="https://www.google.com/maps?q=Rua+dos+Goitacazes+214,+Centro,+Belo+Horizonte+-+MG&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ RODAPÉ ═══════════ -->
+  <footer class="site-footer">
+    <p class="site-footer__word" aria-hidden="true">Armazém</p>
+    <div class="site-footer__bar">
+      <p class="site-footer__copy">© <span id="ano-atual">2026</span> Armazém Minas Gerais · Belo Horizonte, MG</p>
+      <p class="site-footer__links">
+        <a href="https://www.instagram.com/armazemmg/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://wa.me/5535991234567" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <span aria-hidden="true">·</span>
+        <a href="#topo">Voltar ao topo ↑</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a class="origin-btn origin-btn-whatsapp whatsapp-float" href="https://wa.me/5535991234567?text=Ol%C3%A1%2C%20Armaz%C3%A9m!" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+    <svg class="whatsapp-float__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.36A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.08.8.82-3-.2-.31a8.2 8.2 0 1 1 6.96 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.78.97-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.43l-.75-1.8c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.7 2.7 0 0 0-.85 2.02c0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.13 3.65 1.54.66 2.14.72 2.9.6.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28Z"/></svg>
+    <span class="whatsapp-float__label">Chama no zap</span>
+  </a>
+
+  <!-- Scripts de animação -->
+  <script src="components/simple-anime.js"></script>
+  <script src="components/origin-button.js"></script>
+  <script>new SimpleAnime();</script>
+
+  <!-- Comportamentos da página -->
+  <script src="js/main.js"></script>
+</body>
+</html>

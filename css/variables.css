@@ -1,0 +1,64 @@
+/*
+ * variables.css
+ * Tokens de design do Armazém Minas Gerais: cores, tipografia, espaçamentos.
+ * Toda cor e fonte do site deve vir daqui.
+ */
+
+:root {
+  /* ── Cores da marca ── */
+  --color-primary:   #7b4f2e; /* madeira de balcão */
+  --color-secondary: #f5efe0; /* papel de embrulho claro */
+  --color-accent:    #c9973a; /* doce de leite / cachaça envelhecida */
+
+  /* ── Tons derivados ── */
+  --color-ink:          #2a1a0f; /* texto principal, quase café */
+  --color-ink-soft:     #5c4433; /* texto secundário */
+  --color-primary-dark: #4a2e1a; /* fundos escuros */
+  --color-primary-deep: #2f1d10; /* fundo mais profundo (rodapé) */
+  --color-paper:        #ebe1c9; /* papel kraft (etiquetas) */
+  --color-paper-light:  #fbf7ec; /* papel caderneta */
+  --color-line:         rgba(123, 79, 46, 0.22); /* linhas finas */
+  --color-margin-red:   #b5523b; /* margem vermelha da caderneta */
+  --color-open:         #4f7a3a; /* status "aberto" */
+  --color-closed:       #9c3d2c; /* status "fechado" */
+  --color-whatsapp:     #25d366;
+  --color-whatsapp-dark:#128c7e;
+
+  /* ── Tipografia ── */
+  --font-display: 'Nunito', system-ui, sans-serif;
+  --font-body:    'Lato', system-ui, sans-serif;
+
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-md:   1.125rem;
+  --fs-lg:   clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl:   clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+  --fs-2xl:  clamp(2.2rem, 1.4rem + 4vw, 4.5rem);
+  --fs-giant: clamp(4.2rem, 1rem + 15vw, 15rem);
+
+  --lh-tight: 0.88;
+  --lh-snug:  1.2;
+  --lh-body:  1.65;
+
+  /* ── Espaçamento ── */
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: clamp(4.5rem, 3rem + 6vw, 9rem);
+
+  --gutter: clamp(1rem, 0.5rem + 3vw, 3rem);
+  --container: 1240px;
+
+  /* ── Formas e efeitos ── */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --shadow-paper: 0 1px 0 rgba(42, 26, 15, 0.08), 0 14px 30px -18px rgba(42, 26, 15, 0.45);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --header-height: 64px;
+}

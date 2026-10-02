@@ -1,0 +1,37 @@
+/*
+ * simple-anime.css
+ * Estados iniciais das animações de entrada (SimpleAnime).
+ * Os elementos só ficam escondidos quando o JS está ativo (classe .js no <html>),
+ * assim o conteúdo continua visível se o script falhar.
+ */
+
+/* Estado inicial: invisível */
+.js [data-anime] {
+  opacity: 0;
+  transition:
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 800ms ease;
+  will-change: transform, opacity;
+}
+
+/* Classes de direção (estado de partida) */
+.js .fadeInUp       { transform: translate3d(0, 40px, 0); }
+.js .fadeInDown     { transform: translate3d(0, -20px, 0); }
+.js .fadeInLeft     { transform: translate3d(-40px, 0, 0); }
+.js .fadeInRight    { transform: translate3d(40px, 0, 0); }
+.js .fadeInScale    { transform: scale(0.92); }
+.js .fadeInSlightUp { transform: translate3d(0, 14px, 0); }
+
+/* Estado final: visível e na posição original */
+.js [data-anime].anime {
+  opacity: 1;
+  transform: none;
+}
+
+/* Movimento reduzido: sem deslocamento */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-anime] {
+    transition: opacity 200ms linear;
+    transform: none;
+  }
+}
